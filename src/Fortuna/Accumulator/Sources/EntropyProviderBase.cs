@@ -8,7 +8,7 @@ namespace Fortuna.Accumulator.Sources
         public abstract string SourceName { get; }
         protected abstract TimeSpan ScheduledPeriod { get; }
         
-        protected abstract byte[] GetEntropy();
+        protected internal abstract byte[] GetEntropy();
 
         public virtual IScheduledEvent GetScheduledEvent()
         {

@@ -8,7 +8,7 @@ namespace Fortuna.Accumulator.Sources
     {
         public override string SourceName => "Environment Uptime";
         protected override TimeSpan ScheduledPeriod => TimeSpan.FromMilliseconds(5);
-        protected override byte[] GetEntropy()
+        protected internal override byte[] GetEntropy()
         {
             IEnumerable<byte> bytes = BitConverter.GetBytes(Environment.TickCount);
 

@@ -9,7 +9,7 @@ namespace Fortuna.Accumulator.Sources
 
         public override string SourceName => ".NET RNGCryptoServiceProvider";
         protected override TimeSpan ScheduledPeriod => TimeSpan.FromMilliseconds(100);
-        protected override byte[] GetEntropy()
+        protected internal override byte[] GetEntropy()
         {
             var randomData = new byte[32];
             _cryptoService.GetBytes(randomData);

@@ -6,7 +6,7 @@ namespace Fortuna.Accumulator.Sources
     {
         public override string SourceName => ".NET Garbage Collector";
         protected override TimeSpan ScheduledPeriod => TimeSpan.FromMilliseconds(50);
-        protected override byte[] GetEntropy()
+        protected internal override byte[] GetEntropy()
         {
             var totalMemory = GC.GetTotalMemory(false);
             var gen0 = GC.CollectionCount(0);

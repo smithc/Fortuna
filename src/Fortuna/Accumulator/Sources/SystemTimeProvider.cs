@@ -9,7 +9,7 @@ namespace Fortuna.Accumulator.Sources
         public override string SourceName => nameof(SystemTimeProvider);
         protected override TimeSpan ScheduledPeriod => TimeSpan.FromMilliseconds(5);
 
-        protected override byte[] GetEntropy()
+        protected internal override byte[] GetEntropy()
         {
             IEnumerable<byte> byteTime = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());
 
