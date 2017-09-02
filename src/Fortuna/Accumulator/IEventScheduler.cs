@@ -1,8 +1,9 @@
 ﻿using Fortuna.Accumulator.Event;
+using System;
 
 namespace Fortuna.Accumulator
 {
-    public interface IEventScheduler
+    public interface IEventScheduler : IDisposable
     {
         event EntropyAvailableHandler EntropyAvailable;
 

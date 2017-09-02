@@ -13,7 +13,7 @@ namespace Fortuna.Accumulator.Sources
             var gen1 = GC.CollectionCount(1);
             var gen2 = GC.CollectionCount(2);
 
-            var divisor = Math.Min(1, gen0 + gen1 + gen2);
+            var divisor = Math.Max(1, gen0 + gen1 + gen2);
 
             return BitConverter.GetBytes(totalMemory % divisor);
         }

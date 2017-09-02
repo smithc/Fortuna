@@ -20,7 +20,7 @@ namespace Fortuna.Tests.Extensions
         }
 
         [Fact]
-        public void RandomNumber_UpperBound0_Returnts0()
+        public void RandomNumber_UpperBound0_Returns0()
         {
             var rand = _provider.RandomNumber(0);
 
@@ -28,7 +28,7 @@ namespace Fortuna.Tests.Extensions
         }
 
         [Theory]
-        [MemberData("UpperBounds")]
+        [MemberData(nameof(UpperBounds))]
         public void RandomNumber_UpperBoundN_ReturnsBetween0AndN(int upperBound)
         {
             var rand = _provider.RandomNumber(upperBound);

@@ -32,7 +32,7 @@ var rng = await PRNGFortunaProviderFactory.CreateAsync(token);
 The latter will allow you to create the PRNG asynchronously - this may be preferable, as depending on external conditions, 
 it may take a while before there is sufficient random data accumulated before the PRNG is ready for use.
 
-Regardless of the method used to construct the PRNG, you can request random data via the following method:+1:
+Regardless of the method used to construct the PRNG, you can request random data via the following method:
 ``` 
 var data = new byte[128];
 var randomData = prng.GetBytes(data);

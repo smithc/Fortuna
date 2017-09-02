@@ -2,15 +2,18 @@
 using System.Linq;
 using Fortuna.Generator;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace Fortuna.Tests.Generator
 {
     public class FortunaGeneratorTests
     {
         private FortunaGenerator _sut;
+        private readonly ITestOutputHelper _output;
 
-        public FortunaGeneratorTests()
+        public FortunaGeneratorTests(ITestOutputHelper output)
         {
+            _output = output;
             _sut = new FortunaGenerator();
         }
 
@@ -48,8 +51,8 @@ namespace Fortuna.Tests.Generator
         [Fact]
         public void UniformRandomDistributionTest()
         {
-            const int numIterations = 100000;
-            const int range = 100;
+            const int numIterations = 250_000;
+            const int range = 1000;
             var distribution = new int[range];
 
             var data = new byte[sizeof(int)];
@@ -61,10 +64,22 @@ namespace Fortuna.Tests.Generator
                 distribution[value]++;
             }
 
-            var expectedValue = numIterations/range;
-            var stdDev = 0.1*expectedValue;
+            var expectedValue = numIterations / range;
+            var stdDev = range - 1 / Math.Sqrt(12);
 
-            Assert.True(distribution.All(i => i >= expectedValue - stdDev && i <= expectedValue + stdDev));
+            var outliers = distribution
+                .Where(i => i < expectedValue - stdDev || i > expectedValue + stdDev)
+                .ToArray();
+            if (outliers.Any())
+            {
+                _output.WriteLine($"Expected value: {expectedValue}");
+                foreach (var outlier in outliers)
+                {
+                    var difference = Math.Max(outlier, expectedValue) - Math.Min(outlier, expectedValue);
+                    _output.WriteLine($"{outlier}: diff of {difference} ({difference / stdDev}% of std. dev)");
+                }
+                Assert.True(false, "Outliers detected");
+            }
         }
     }
 }

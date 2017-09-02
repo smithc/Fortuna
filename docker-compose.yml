@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  fortuna.cli:
+    image: fortuna.cli
+    build:
+      context: ./src/Fortuna.CLI
+      dockerfile: Dockerfile
