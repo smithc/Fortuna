@@ -11,7 +11,7 @@ namespace Fortuna.Accumulator.Sources
 
         public override string SourceName => "Current Processor Time";
         protected override TimeSpan ScheduledPeriod => TimeSpan.FromMilliseconds(10);
-        protected override byte[] GetEntropy()
+        protected internal override byte[] GetEntropy()
         {
             var ticks = _currentProcess.TotalProcessorTime.Ticks;
             var vMemory = _currentProcess.VirtualMemorySize64;
@@ -24,16 +24,16 @@ namespace Fortuna.Accumulator.Sources
 
             if (!BitConverter.IsLittleEndian)
             {
-                timeBytes = timeBytes.Reverse().Take(2);
-                vMemoryBytes = vMemoryBytes.Reverse().Take(2);
-                pagedBytes = pagedBytes.Reverse().Take(2);
-                workingBytes = workingBytes.Reverse().Take(2);
+                timeBytes = timeBytes.Reverse();
+                vMemoryBytes = vMemoryBytes.Reverse();
+                pagedBytes = pagedBytes.Reverse();
+                workingBytes = workingBytes.Reverse();
             }
 
-            return timeBytes
-                .Concat(vMemoryBytes)
-                .Concat(pagedBytes)
-                .Concat(workingBytes)
+            return timeBytes.Take(2)
+                .Concat(vMemoryBytes.Take(2))
+                .Concat(pagedBytes.Take(2))
+                .Concat(workingBytes.Take(2))
                 .ToArray();
         }
 
@@ -48,6 +48,8 @@ namespace Fortuna.Accumulator.Sources
 
         protected void Dispose(bool disposing)
         {
+            if (!disposing) return;
+
             if (_isDisposed) return;
 
             _currentProcess?.Dispose();

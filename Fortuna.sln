@@ -1,21 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{90141355-6788-40AC-9484-8D2B93E333D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{59D4FFAF-F229-4167-ABB3-CD981D3E0DE6}"
 	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Fortuna", "src\Fortuna\Fortuna.xproj", "{F2AC9E8B-66F8-4D36-B5A4-5CE14ABF0E8B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{57B61C9E-1A2F-4DE1-9619-695523F06734}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Fortuna.Tests", "test\Fortuna.Tests\Fortuna.Tests.xproj", "{8D796D1F-B8EC-4B86-8914-50F9C9AE4878}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fortuna", "src\Fortuna\Fortuna.csproj", "{F2AC9E8B-66F8-4D36-B5A4-5CE14ABF0E8B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fortuna.Tests", "test\Fortuna.Tests\Fortuna.Tests.csproj", "{8D796D1F-B8EC-4B86-8914-50F9C9AE4878}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fortuna.CLI", "src\Fortuna.CLI\Fortuna.CLI.csproj", "{3D26FE09-D940-4CF1-8426-37DAF3222F09}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{B2E2A577-3EE5-40CA-817F-77A7731048EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +34,14 @@ Global
 		{8D796D1F-B8EC-4B86-8914-50F9C9AE4878}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D796D1F-B8EC-4B86-8914-50F9C9AE4878}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D796D1F-B8EC-4B86-8914-50F9C9AE4878}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D26FE09-D940-4CF1-8426-37DAF3222F09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D26FE09-D940-4CF1-8426-37DAF3222F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D26FE09-D940-4CF1-8426-37DAF3222F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D26FE09-D940-4CF1-8426-37DAF3222F09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2E2A577-3EE5-40CA-817F-77A7731048EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2E2A577-3EE5-40CA-817F-77A7731048EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2E2A577-3EE5-40CA-817F-77A7731048EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2E2A577-3EE5-40CA-817F-77A7731048EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,5 +49,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{F2AC9E8B-66F8-4D36-B5A4-5CE14ABF0E8B} = {90141355-6788-40AC-9484-8D2B93E333D4}
 		{8D796D1F-B8EC-4B86-8914-50F9C9AE4878} = {57B61C9E-1A2F-4DE1-9619-695523F06734}
+		{3D26FE09-D940-4CF1-8426-37DAF3222F09} = {90141355-6788-40AC-9484-8D2B93E333D4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9CA8B6EC-6D81-4842-A05B-E271FC3027E8}
 	EndGlobalSection
 EndGlobal

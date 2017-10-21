@@ -108,6 +108,8 @@ namespace Fortuna.Accumulator
             if (_isDisposed) return;
 
             _eventScheduler.EntropyAvailable -= AccumulateEntropy;
+            _eventScheduler?.Dispose();
+
             foreach (var pool in _entropyPools)
             {
                 pool?.Dispose();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 
 namespace Fortuna.Extensions
@@ -15,10 +16,9 @@ namespace Fortuna.Extensions
         public static int RandomNumber(this IPRNGFortunaProvider provider, int upperBound)
         {
             int numBits = PowUpperBound(upperBound);
-            var numBytes = (int)Math.Ceiling(numBits / 8d);
+            var numBytes = (int) Math.Ceiling(numBits / 8d);
 
-            //var offset = numBits % 8;
-            var offset = 8 - numBits % (numBytes * 8);
+            var offset = numBits % 8;
             int retVal;
 
             var bytes = new byte[numBytes];
@@ -30,19 +30,30 @@ namespace Fortuna.Extensions
                 // Now we need to conditionally dispose of any extra bits
                 if (offset != 0)
                 {
+                    var bits = new BitArray(bytes);
+
+                    // Truncate (zero-out) high-order bits, if necessary
                     if (BitConverter.IsLittleEndian)
                     {
-                        bytes[bytes.Length - 1] = (byte) (bytes[bytes.Length - 1] << offset);
-                        bytes[bytes.Length - 1] = (byte)(bytes[bytes.Length - 1] >> offset);
+                        for (var i = bits.Length - 1; i > numBits; i--)
+                        {
+                            bits.Set(i, false);
+                        }
                     }
                     else
                     {
-                        bytes[0] = (byte) (bytes[0] >> offset);
-                        bytes[0] = (byte)(bytes[0] << offset);
+                        for (var i = 0; i < bits.Length - numBits; i++)
+                        {
+                            bits.Set(i, false);
+                        }
                     }
+
+                    var truncatedBytes = new byte[numBytes];
+                    ((ICollection)bits).CopyTo(truncatedBytes, 0);
+                    bytes = truncatedBytes;
                 }
 
-                var prepostFix = Enumerable.Repeat((byte) 0, 4 - bytes.Length);
+                var prepostFix = Enumerable.Repeat((byte)0, sizeof(int) - bytes.Length);
                 var intBytes = BitConverter.IsLittleEndian
                     ? bytes.Concat(prepostFix)
                     : prepostFix.Concat(bytes);
