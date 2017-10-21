@@ -10,7 +10,11 @@
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Chris Smith</Authors>
+    <PackageProjectUrl>https://github.com/smithc/Fortuna</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/smithc/Fortuna/master/fortuna-logo.jpg</PackageIconUrl>
+    <PackageTags>fortuna fortuna.net prng rng secure pseudo random number generator</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />

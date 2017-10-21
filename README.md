@@ -1,7 +1,7 @@
 # Fortuna.NET
 
 This is an implementation of the Fortuna PRNG algorithm for .NET. 
-It has been built on _NETStandard 1.3_, and so is compatible with .NET Framework 4.6 as well as .NET Core 1.0 (on Mac, Linux and Windows).
+It has been built on _NETStandard 1.3_, and so is compatible with .NET Framework 4.6 as well as .NET Core 1.0 or higher (on Mac, Linux and Windows).
 
 ## What is Fortuna?
 
@@ -17,6 +17,9 @@ Fortuna is a family of secure PRNGs; its design leaves some choices open to impl
 * The seed file, which stores enough state to enable the computer to start generating random numbers as soon as it has booted.
 
 ## Usage
+
+You can download the package on [nuget.org](https://www.nuget.org/packages/Fortuna).
+
 It is recommended that you use one of the provided factory methods to construct the provider:
 
 ``` var rng = PRNGFortunaProviderFactory.Create(); ```
