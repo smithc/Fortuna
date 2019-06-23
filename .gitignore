@@ -253,3 +253,9 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+# VS Code
+.vscode/
+
+# MacOS
+.DS_Store

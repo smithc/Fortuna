@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>A Fortuna implementation for .NET</Description>
-    <Copyright>Chris Smith 2017</Copyright>
+    <Copyright>Chris Smith 2019</Copyright>
     <AssemblyTitle>Fortuna.NET</AssemblyTitle>
     <TargetFramework>netstandard1.3</TargetFramework>
     <AssemblyName>Fortuna</AssemblyName>
@@ -14,7 +14,12 @@
     <PackageProjectUrl>https://github.com/smithc/Fortuna</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/smithc/Fortuna/master/fortuna-logo.jpg</PackageIconUrl>
     <PackageTags>fortuna fortuna.net prng rng secure pseudo random number generator</PackageTags>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Version>1.0.1</Version>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../LICENSE" Pack="true" PackagePath=""/>
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
     <PackageReference Include="System.Linq" Version="4.3.0" />
